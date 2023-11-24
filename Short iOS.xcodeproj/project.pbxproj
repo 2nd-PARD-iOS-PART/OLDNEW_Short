@@ -20,6 +20,7 @@
 		0DE2B3C62B108CA40066BD68 /* FontSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE2B3C52B108CA40066BD68 /* FontSystem.swift */; };
 		0DE2B3C82B108CEE0066BD68 /* ImageSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE2B3C72B108CEE0066BD68 /* ImageSystem.swift */; };
 		0DE2B3CF2B1098400066BD68 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0DE2B3CE2B1098400066BD68 /* .gitignore */; };
+		DAC9DFD12B10F9ED00C7A5BC /* LetterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC9DFD02B10F9ED00C7A5BC /* LetterModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		0DE2B3C52B108CA40066BD68 /* FontSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSystem.swift; sourceTree = "<group>"; };
 		0DE2B3C72B108CEE0066BD68 /* ImageSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSystem.swift; sourceTree = "<group>"; };
 		0DE2B3CE2B1098400066BD68 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		DAC9DFD02B10F9ED00C7A5BC /* LetterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,8 +110,8 @@
 		0DE2B3902B10883E0066BD68 /* Short iOS */ = {
 			isa = PBXGroup;
 			children = (
+				DAC9DFCF2B10F9DF00C7A5BC /* DataModel */,
 				0DE2B3CB2B108E2F0066BD68 /* App */,
-				0DE2B3CC2B108E510066BD68 /* DataModel */,
 				0DE2B3C92B108D7B0066BD68 /* APICaller */,
 				0DE2B3CA2B108D950066BD68 /* Theme */,
 				0DE2B3952B10883E0066BD68 /* ViewController.swift */,
@@ -163,13 +165,6 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		0DE2B3CC2B108E510066BD68 /* DataModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DataModel;
-			sourceTree = "<group>";
-		};
 		0DE2B3CD2B1090AC0066BD68 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +172,14 @@
 				0DE2B39A2B1088400066BD68 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		DAC9DFCF2B10F9DF00C7A5BC /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				DAC9DFD02B10F9ED00C7A5BC /* LetterModel.swift */,
+			);
+			path = DataModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,6 +318,7 @@
 				0DE2B3C82B108CEE0066BD68 /* ImageSystem.swift in Sources */,
 				0DE2B3922B10883E0066BD68 /* AppDelegate.swift in Sources */,
 				0DE2B3942B10883E0066BD68 /* SceneDelegate.swift in Sources */,
+				DAC9DFD12B10F9ED00C7A5BC /* LetterModel.swift in Sources */,
 				0DE2B3C22B1088770066BD68 /* APICaller.swift in Sources */,
 				0DE2B3C62B108CA40066BD68 /* FontSystem.swift in Sources */,
 			);
