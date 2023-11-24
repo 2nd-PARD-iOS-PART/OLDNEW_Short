@@ -11,8 +11,6 @@ protocol WriteViewControllerDelegate: AnyObject {
     func didSubmitContent(_ content: String)
 }
 
-//class WriteViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
     class WriteViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     
@@ -25,11 +23,13 @@ protocol WriteViewControllerDelegate: AnyObject {
     var imageView: UIImageView?
     var selectedImage: UIImage? = nil
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupUI()
-        setupIconButtons()
-    }
+
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            setupUI()
+            setupIconButtons()
+            setBackgroundToSkyImage()
+        }
     
     func setupUI() {
         // Title TextField
@@ -104,6 +104,11 @@ protocol WriteViewControllerDelegate: AnyObject {
         textField?.rightViewMode = .always
     }
     
+        func setBackgroundToSkyImage() {
+            if let bgImage = UIImage(named: "sky") {
+                view.backgroundColor = UIColor(patternImage: bgImage)
+            }
+        }
     
     func setupIconButtons() {
         // Select 버튼
@@ -158,6 +163,7 @@ protocol WriteViewControllerDelegate: AnyObject {
         } else {
             // 이미지 선택이 없을 때 'sky' 이미지로 설정
             if let bgImage = UIImage(named: "sky") {
+                print("sdf")
                 view.backgroundColor = UIColor(patternImage: bgImage)
                 imageView?.image = bgImage // 이미지뷰에 'sky' 이미지 업데이트
             } else {
@@ -169,3 +175,9 @@ protocol WriteViewControllerDelegate: AnyObject {
 
 
 }
+
+
+
+
+
+
