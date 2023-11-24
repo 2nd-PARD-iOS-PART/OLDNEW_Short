@@ -12,6 +12,7 @@ protocol WriteViewControllerDelegate: AnyObject {
 }
 class WriteViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    
 
     weak var delegate: WriteViewControllerDelegate? // Delegate property
 
