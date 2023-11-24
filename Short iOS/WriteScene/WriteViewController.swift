@@ -12,13 +12,16 @@ protocol WriteViewControllerDelegate: AnyObject {
 }
 class WriteViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    
-
+    var data : [GetLetterData] = []
     weak var delegate: WriteViewControllerDelegate? // Delegate property
 
-    private lazy var sendbutton : UIButton = {
-        var button = UIButton()
-        button.addTarget(self, action: #selector(submitTapped), for: <#T##UIControl.Event#>)
+    private lazy var sendButton: UIButton = {
+        var button = UIButton(type: .system)
+        button.setTitle("Send", for: .normal)
+        button.tintColor = .white
+        button.backgroundColor = .blue // You can customize this
+        button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(submitTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -34,6 +37,7 @@ class WriteViewController: UIViewController, UIImagePickerControllerDelegate, UI
             setupUI()
             setupIconButtons()
             setBackgroundToSkyImage()
+            setupSendButton()
         }
 
     func setupUI() {
@@ -91,7 +95,16 @@ class WriteViewController: UIViewController, UIImagePickerControllerDelegate, UI
             writerTextField!.heightAnchor.constraint(equalToConstant: 46)
         ])
     }
-
+    
+    private func setupSendButton() {
+        view.addSubview(sendButton)
+        NSLayoutConstraint.activate([
+            sendButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            sendButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            sendButton.widthAnchor.constraint(equalToConstant: 150),
+            sendButton.heightAnchor.constraint(equalToConstant: 44)
+        ])
+    }
     func styleTextField(textField: UITextField?) {
         textField?.borderStyle = .none
         textField?.backgroundColor = UIColor(white: 1, alpha: 0.5) // 반투명 배경
@@ -127,8 +140,6 @@ class WriteViewController: UIViewController, UIImagePickerControllerDelegate, UI
             }
     }
 
-
-
     @objc func selectImageTapped(_ sender: UITapGestureRecognizer) {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
@@ -136,51 +147,44 @@ class WriteViewController: UIViewController, UIImagePickerControllerDelegate, UI
         present(imagePickerController, animated: true, completion: nil)
     }
 
-
     @objc func submitTapped() {
-    //
+        // Extract data from text fields and image view
+       
+        guard let title = titleTextField?.text, !title.isEmpty,
+              let sender = writerTextField?.text, !sender.isEmpty,
+              let content = contentTextView?.text, !content.isEmpty
+        else {
+            print("Error: Some fields are empty")
+            return
         }
-        
-        
-        
-
-
-    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let pickedImage = info[.originalImage] as? UIImage {
-            selectedImage = pickedImage
-            
-            if let bgImage = selectedImage {
-                // 배경 이미지로 설정
-                view.backgroundColor = UIColor(patternImage: bgImage)
-                
-                // 이미지뷰 추가
-                if imageView == nil {
-                    imageView = UIImageView(image: pickedImage)
-                    imageView?.frame = view.bounds
-                    imageView?.contentMode = .scaleAspectFill
-                    imageView?.clipsToBounds = true
-                    view.addSubview(imageView!)
-                    view.sendSubviewToBack(imageView!)
-                } else {
-                    imageView?.image = pickedImage // 이미지가 이미 존재하는 경우 이미지 업데이트
-                }
-            }
-        } else {
-            // 이미지 선택이 없을 때 'sky' 이미지로 설정
-            if let bgImage = UIImage(named: "sky") {
-                print("sdf")
-                view.backgroundColor = UIColor(patternImage: bgImage)
-                imageView?.image = bgImage // 이미지뷰에 'sky' 이미지 업데이트
-            } else {
-                view.backgroundColor = .white // 'sky' 이미지가 없는 경우 기본 배경 색상 설정
-            }
-        }
-        dismiss(animated: true, completion: nil)
+    
+        // Call APIcaller to make the post request
+        APIcaller.shared.makePostRequestLetter(with: "user undetected", roomCode: "not roomcode", title: title, sender: sender, content: content)
+//        APIcaller.shared.getLetterData { [weak self]  result in
+//            switch result {
+//            case .success(let data):
+//
+//            }
+//        }
     }
-
 
 }
 
+//[weak self] result in
+/*
+ case .success(let data):
+     // 가져온 데이터를 ViewController의 userData 배열에 저장
+     self?.data = data
+     // 테이블 뷰를 메인 스레드에서 업데이트
+     DispatchQueue.main.async {
+         self?.tableView.reloadData()
+     }
+     case .failure(let error):
+         print("API call error: \(error)")
+     }
+ }
+ 
+ */
 
 
 
