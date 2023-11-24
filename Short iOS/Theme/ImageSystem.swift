@@ -9,6 +9,6 @@ import UIKit
 extension UIImage {
     //예시 
     static var imagename : UIImage? {
-        return UIImage(named: " ") ?? UIImage(named: "sejin")
+        return UIImage(named: "background") 
     }
 }
