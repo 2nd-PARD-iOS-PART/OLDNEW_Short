@@ -1,34 +1,20 @@
 //
-//  LoginViewController.swift
+//  SignUpViewController.swift
 //  Short iOS
 //
-//  Created by 진세진 on 2023/11/25.
+//  Created by 이신원 on 2023/11/25.
+//
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class SignUpViewController: UIViewController {
     
-    //    let realm = RealmStart.realmShared
-    //    private var isLoginSuccessful : Bool = false
-    // 배경 이미지 뷰
     let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.image = UIImage(named: "sky_moon") // 배경 이미지 파일명으로 변경하세요.
         return imageView
     }()
-    
-    
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "모든 것이 새로운 당신을 응원해요."
-        label.textColor = .white
-        label.textAlignment = .center
-        label.numberOfLines = 0 // 여러 줄로 표시
-        //        label.font =
-        return label
-    }()
-    
     
     private let usernameTextField : UITextField = {
         let textField = UITextField()
@@ -66,9 +52,9 @@ class LoginViewController: UIViewController {
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
-    private lazy var loginButton: UIButton = {
+    private lazy var signUpButton: UIButton = {
         var button = UIButton()
-        button.setTitle("로그인", for: .normal)
+        button.setTitle("회원가입", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = UIColor.primary
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -80,38 +66,42 @@ class LoginViewController: UIViewController {
         return button
     }()
     
-    private lazy var signUpButton: UIButton = {
-        var button = UIButton()
-        button.setTitle("회원가입", for: .normal )
-        button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = .white
-        button.tintColor = .black
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(handleSignup), for: .touchUpInside)
-        // 버튼 윤곽 둥글게 설정
-        button.layer.cornerRadius = 8 // 원하는 'cornerRadius' 값으로 설정
-        button.layer.masksToBounds = true
+    @objc private func handleLogin() {
+        //        guard let username = usernameTextField.text, !username.isEmpty,
+        //              let password = passwordTextField.text, !password.isEmpty else {
+        //            updateTextFieldBorders(withError: true)
+        //            return
+        //        }
+        //
+        //        if authenticateUser(username: username, password: password) {
+        //            navigateToHomePage()
+        //        } else {
+        //            updateTextFieldBorders(withError: true)
+        //        }
+        
+        let homeVC = HomeViewController( )
+        //homeVC.delegate = self  // Set the delegate
+        navigationController?.pushViewController(homeVC, animated: true)
 
-        return button
-    }()
+     
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
-        usernameTextField.delegate = self
-        passwordTextField.delegate = self
+//        usernameTextField.delegate = self
+//        passwordTextField.delegate = self
         
     }
+    
     
     func setupUI() {
         
         view.addSubview(backgroundImageView)
         backgroundImageView.frame = view.bounds
-        
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(titleLabel)
-        
+       
         view.addSubview(idLabel)
         idLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(usernameTextField)
@@ -131,13 +121,9 @@ class LoginViewController: UIViewController {
         
         view.addSubview(lineView2)
         
-        view.addSubview(loginButton)
         view.addSubview(signUpButton)
         
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 250),
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
             idLabel.topAnchor.constraint(equalTo: usernameTextField.topAnchor, constant: -25),
             idLabel.leadingAnchor.constraint(equalTo: usernameTextField.leadingAnchor),
             
@@ -171,88 +157,11 @@ class LoginViewController: UIViewController {
             lineView2.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 10),
             
             
-            loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 60),
-            loginButton.widthAnchor.constraint(equalTo: passwordTextField.widthAnchor),
-            
             signUpButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            signUpButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 20),
-            signUpButton.widthAnchor.constraint(equalTo: loginButton.widthAnchor),
+            signUpButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 60),
+            signUpButton.widthAnchor.constraint(equalTo: passwordTextField.widthAnchor),
         ])
     }
     
-    @objc private func handleLogin() {
-        //        guard let username = usernameTextField.text, !username.isEmpty,
-        //              let password = passwordTextField.text, !password.isEmpty else {
-        //            updateTextFieldBorders(withError: true)
-        //            return
-        //        }
-        //
-        //        if authenticateUser(username: username, password: password) {
-        //            navigateToHomePage()
-        //        } else {
-        //            updateTextFieldBorders(withError: true)
-        //        }
-        
-        let homeVC = HomeViewController( )
-        //homeVC.delegate = self  // Set the delegate
-        navigationController?.pushViewController(homeVC, animated: true)
-
-     
-        
-    }
-    
-    @objc private func handleSignup() {
-        //        guard let username = usernameTextField.text, !username.isEmpty,
-        //              let password = passwordTextField.text, !password.isEmpty else {
-        //            updateTextFieldBorders(withError: true)
-        //            return
-        //        }
-        //
-        //        if authenticateUser(username: username, password: password) {
-        //            navigateToHomePage()
-        //        } else {
-        //            updateTextFieldBorders(withError: true)
-        //        }
-        
-        let signVC = SignUpViewController( )
-        //homeVC.delegate = self  // Set the delegate
-        navigationController?.pushViewController(signVC, animated: true)
-
-     
-        
-    }
-    
-    
-    
-    
-    private func navigateToHomePage() {
-        //        let homePageVC = DetailViewController()
-        //        self.navigationController?.pushViewController(homePageVC, animated: true)
-        //        print("Login successful")
-    }
-    
-    private func updateTextFieldBorders(withError showError: Bool) {
-        let borderColor: CGColor = showError ? UIColor.red.cgColor : UIColor.clear.cgColor
-        [usernameTextField, passwordTextField].forEach {
-            $0.layer.borderColor = borderColor
-            $0.layer.borderWidth = showError ? 1.0 : 0.0
-        }
-    }
 }
-
-extension LoginViewController: UITextFieldDelegate {
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // 사용자가 Return 키를 눌렀을 때 호출.
-        if textField == usernameTextField {
-            // 사용자 이름 입력 후, 비밀번호 필드로 포커스.
-            passwordTextField.becomeFirstResponder()
-        } else if textField == passwordTextField {
-            // 비밀번호 입력 후, 로그인 처리.
-            textField.resignFirstResponder()
-            handleLogin()
-        }
-        return true
-    }
-}

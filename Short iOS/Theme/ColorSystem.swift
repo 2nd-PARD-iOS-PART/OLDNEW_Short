@@ -30,7 +30,7 @@ extension UIColor {
     }
     
     static var primary: UIColor {
-        return UIColor(rgb: 0xffF35E3E, alpha: 1.0)
+        return UIColor(rgb: 0xffFEE48D, alpha: 1.0)
     }
     
     static var secondary: UIColor {

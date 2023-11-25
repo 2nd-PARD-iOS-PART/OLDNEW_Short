@@ -30,6 +30,9 @@
 		0DE2B4232B113E430066BD68 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0DE2B4222B113E430066BD68 /* RealmSwift */; };
 		0DE2B4252B114F8B0066BD68 /* navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE2B4242B114F8B0066BD68 /* navigation.swift */; };
 		0DE2B4272B1158110066BD68 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE2B4262B1158110066BD68 /* WriteViewController.swift */; };
+		DAC9DFDD2B1161FA00C7A5BC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC9DFDC2B1161FA00C7A5BC /* HomeViewController.swift */; };
+		DAC9DFDF2B116C0700C7A5BC /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC9DFDE2B116C0700C7A5BC /* CustomTableViewCell.swift */; };
+		DAC9DFE12B116D5800C7A5BC /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC9DFE02B116D5800C7A5BC /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +78,9 @@
 		0DE2B41D2B1131A40066BD68 /* GetLetterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLetterData.swift; sourceTree = "<group>"; };
 		0DE2B4242B114F8B0066BD68 /* navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navigation.swift; sourceTree = "<group>"; };
 		0DE2B4262B1158110066BD68 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
+		DAC9DFDC2B1161FA00C7A5BC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		DAC9DFDE2B116C0700C7A5BC /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		DAC9DFE02B116D5800C7A5BC /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				0DE2B4112B1102BF0066BD68 /* LoginViewController.swift */,
+				DAC9DFE02B116D5800C7A5BC /* SignUpViewController.swift */,
 			);
 			path = LoginPage;
 			sourceTree = "<group>";
@@ -219,6 +226,8 @@
 			isa = PBXGroup;
 			children = (
 				0DE2B4162B1124C00066BD68 /* DetailViewController.swift */,
+				DAC9DFDC2B1161FA00C7A5BC /* HomeViewController.swift */,
+				DAC9DFDE2B116C0700C7A5BC /* CustomTableViewCell.swift */,
 			);
 			path = DeatilScene;
 			sourceTree = "<group>";
@@ -375,11 +384,14 @@
 				0DE2B41C2B112EEB0066BD68 /* Error.swift in Sources */,
 				0DE2B3C82B108CEE0066BD68 /* ImageSystem.swift in Sources */,
 				0DE2B3922B10883E0066BD68 /* AppDelegate.swift in Sources */,
+				DAC9DFE12B116D5800C7A5BC /* SignUpViewController.swift in Sources */,
 				0DE2B4252B114F8B0066BD68 /* navigation.swift in Sources */,
+				DAC9DFDF2B116C0700C7A5BC /* CustomTableViewCell.swift in Sources */,
 				0DE2B41A2B112EAA0066BD68 /* UserData.swift in Sources */,
 				0DE2B3942B10883E0066BD68 /* SceneDelegate.swift in Sources */,
 				0DE2B4152B11104C0066BD68 /* RealmStart.swift in Sources */,
 				0DE2B3C22B1088770066BD68 /* APICaller.swift in Sources */,
+				DAC9DFDD2B1161FA00C7A5BC /* HomeViewController.swift in Sources */,
 				0DE2B3C62B108CA40066BD68 /* FontSystem.swift in Sources */,
 				0DE2B41E2B1131A40066BD68 /* GetLetterData.swift in Sources */,
 				0DE2B4272B1158110066BD68 /* WriteViewController.swift in Sources */,
