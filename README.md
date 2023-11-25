@@ -21,6 +21,14 @@ FT 아이랜드
 
 
 #### Project Detail
+![Group 68](https://github.com/2nd-PARD-iOS-PART/OLDNEW_Short/assets/82192923/28898287-781d-4139-8262-7ddcdc60d4d5)
+![Splash](https://github.com/2nd-PARD-iOS-PART/OLDNEW_Short/assets/82192923/9419ba51-7f99-43b3-a0cb-8d585a770540)
+![로그인 화면-2](https://github.com/2nd-PARD-iOS-PART/OLDNEW_Short/assets/82192923/2278c033-0b6d-4326-8458-b78dd4bd61cb)
+![방 생성 및 입장_1](https://github.com/2nd-PARD-iOS-PART/OLDNEW_Short/assets/82192923/edc52f38-18e9-492e-99b4-f7524f850835)
+![방 입장](https://github.com/2nd-PARD-iOS-PART/OLDNEW_Short/assets/82192923/28ccce72-779e-48a5-bd40-ff1ad6b64358)
+![글쓰기 화면_전](https://github.com/2nd-PARD-iOS-PART/OLDNEW_Short/assets/82192923/b3939970-82fc-4f62-b9b1-d031069182fd)
+![글쓰기 화면_후](https://github.com/2nd-PARD-iOS-PART/OLDNEW_Short/assets/82192923/67739bc4-7266-45f0-8377-a5546e5adb1f)
+
 
 <br><br>
 #### Additional Link
