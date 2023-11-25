@@ -10,23 +10,19 @@ import UIKit
 protocol WriteViewControllerDelegate: AnyObject {
     func didSubmitContent(_ content: String)
 }
-class WriteViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    class WriteViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    weak var delegate: WriteViewControllerDelegate? // Delegate property
+    
+        weak var delegate: WriteViewControllerDelegate? // Delegate property
 
-    private lazy var sendbutton : UIButton = {
-        var button = UIButton()
-        button.addTarget(self, action: #selector(submitTapped), for: <#T##UIControl.Event#>)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+        
     var titleTextField: UITextField?
     var contentTextView: UITextField?
     var writerTextField: UITextField?
     var imageView: UIImageView?
     var selectedImage: UIImage? = nil
-
+    
 
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -34,7 +30,7 @@ class WriteViewController: UIViewController, UIImagePickerControllerDelegate, UI
             setupIconButtons()
             setBackgroundToSkyImage()
         }
-
+    
     func setupUI() {
         // Title TextField
         titleTextField = UITextField()
@@ -90,7 +86,7 @@ class WriteViewController: UIViewController, UIImagePickerControllerDelegate, UI
             writerTextField!.heightAnchor.constraint(equalToConstant: 46)
         ])
     }
-
+    
     func styleTextField(textField: UITextField?) {
         textField?.borderStyle = .none
         textField?.backgroundColor = UIColor(white: 1, alpha: 0.5) // 반투명 배경
@@ -107,43 +103,43 @@ class WriteViewController: UIViewController, UIImagePickerControllerDelegate, UI
         textField?.rightView = paddingView
         textField?.rightViewMode = .always
     }
-
+    
         func setBackgroundToSkyImage() {
             if let bgImage = UIImage(named: "sky") {
                 view.backgroundColor = UIColor(patternImage: bgImage)
             }
         }
-
+    
     func setupIconButtons() {
         // Select 버튼
-        let selectImageIcon = UIImage(named: "selectimageicon")?.withRenderingMode(.alwaysOriginal) // 아이콘 이미지의 렌더링 모드 설정
-        let selectImageButton = UIBarButtonItem(image: selectImageIcon, style: .plain, target: self, action: #selector(selectImageTapped(_:)))
-        
+//        let selectImageIcon = UIImage(named: "selectimageicon")?.withRenderingMode(.alwaysOriginal) // 아이콘 이미지의 렌더링 모드 설정
+//        let selectImageButton = UIBarButtonItem(image: selectImageIcon, style: .plain, target: self, action: #selector(selectImageTapped(_:)))
+//
         // Submit 버튼
         if let paperplaneImage = UIImage(systemName: "paperplane")?.withTintColor(.white, renderingMode: .alwaysOriginal) {
                 let submitImageButton = UIBarButtonItem(image: paperplaneImage, style: .plain, target: self, action: #selector(submitTapped))
-                navigationItem.rightBarButtonItems = [submitImageButton, selectImageButton]
+                navigationItem.rightBarButtonItem = submitImageButton
             }
     }
 
-
-
+    
+    
     @objc func selectImageTapped(_ sender: UITapGestureRecognizer) {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         imagePickerController.sourceType = .photoLibrary
         present(imagePickerController, animated: true, completion: nil)
     }
-
-
+    
+    
     @objc func submitTapped() {
     //
         }
         
         
         
-
-
+    
+    
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[.originalImage] as? UIImage {
             selectedImage = pickedImage
@@ -179,6 +175,7 @@ class WriteViewController: UIViewController, UIImagePickerControllerDelegate, UI
 
 
 }
+
 
 
 

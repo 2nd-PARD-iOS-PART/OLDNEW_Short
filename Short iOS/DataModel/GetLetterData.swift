@@ -12,7 +12,7 @@ struct LetterData : Codable{
 }
 
 struct GetLetterData : Codable{
-    let authorNickname : String
+    let authorId : String
     let roomCode : String
     let title : String
     let sender  : String
