@@ -68,12 +68,8 @@ final class APIcaller{
         }
         task.resume()
     }
-    
-    
-   
-
     // MARK: - Create _ 데이터를 서버에 추가하는 함수
-    func makePostRequestLetter(with nickname : String, roomCode: String, title: Int, sender: String , content  : String , imagePath  : String) {
+    func makePostRequestLetter(with nickname : String, roomCode: String, title: String, sender: String , content  : String ) {
         guard let url = URL(string: "http://3.35.236.83/pard/join") else {
             print("🚨 Invalid URL")
             return
@@ -87,7 +83,6 @@ final class APIcaller{
             "title" : title,
             "sender" : sender,
             "content" : content,
-            "imagePath" : imagePath
         ]
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
         let task = URLSession.shared.dataTask(with: request) { data, _, error in
@@ -132,17 +127,5 @@ final class APIcaller{
         }
         task.resume()
     }
+    
 }
-
-/**
- 
- 
- struct GetLetterData : Codable{
-     let authorNickname : String
-     let roomCode : String
-     let title : String
-     let sender  : String
-     let content  : String
-     let imagePath  : String
- }
- */

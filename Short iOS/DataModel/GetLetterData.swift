@@ -17,5 +17,4 @@ struct GetLetterData : Codable{
     let title : String
     let sender  : String
     let content  : String
-    let imagePath  : String
 }

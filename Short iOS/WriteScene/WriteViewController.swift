@@ -17,6 +17,19 @@ protocol WriteViewControllerDelegate: AnyObject {
         weak var delegate: WriteViewControllerDelegate? // Delegate property
 
         
+    var data : [GetLetterData] = []
+    weak var delegate: WriteViewControllerDelegate? // Delegate property
+
+    private lazy var sendButton: UIButton = {
+        var button = UIButton(type: .system)
+        button.setTitle("Send", for: .normal)
+        button.tintColor = .white
+        button.backgroundColor = .blue // You can customize this
+        button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(submitTapped), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     var titleTextField: UITextField?
     var contentTextView: UITextField?
     var writerTextField: UITextField?
@@ -29,6 +42,7 @@ protocol WriteViewControllerDelegate: AnyObject {
             setupUI()
             setupIconButtons()
             setBackgroundToSkyImage()
+            setupSendButton()
         }
     
     func setupUI() {
@@ -86,7 +100,17 @@ protocol WriteViewControllerDelegate: AnyObject {
             writerTextField!.heightAnchor.constraint(equalToConstant: 46)
         ])
     }
-    
+
+    private func setupSendButton() {
+        view.addSubview(sendButton)
+        NSLayoutConstraint.activate([
+            sendButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            sendButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            sendButton.widthAnchor.constraint(equalToConstant: 150),
+            sendButton.heightAnchor.constraint(equalToConstant: 44)
+        ])
+    }
+
     func styleTextField(textField: UITextField?) {
         textField?.borderStyle = .none
         textField?.backgroundColor = UIColor(white: 1, alpha: 0.5) // 반투명 배경
@@ -122,14 +146,14 @@ protocol WriteViewControllerDelegate: AnyObject {
             }
     }
 
-    
-    
+
     @objc func selectImageTapped(_ sender: UITapGestureRecognizer) {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         imagePickerController.sourceType = .photoLibrary
         present(imagePickerController, animated: true, completion: nil)
     }
+
     
     
     @objc func submitTapped() {
@@ -169,13 +193,47 @@ protocol WriteViewControllerDelegate: AnyObject {
             } else {
                 view.backgroundColor = .white // 'sky' 이미지가 없는 경우 기본 배경 색상 설정
             }
-        }
-        dismiss(animated: true, completion: nil)
-    }
 
+
+    @objc func submitTapped() {
+        // Extract data from text fields and image view
+       
+        guard let title = titleTextField?.text, !title.isEmpty,
+              let sender = writerTextField?.text, !sender.isEmpty,
+              let content = contentTextView?.text, !content.isEmpty
+        else {
+            print("Error: Some fields are empty")
+            return
+
+        }
+    
+        // Call APIcaller to make the post request
+        APIcaller.shared.makePostRequestLetter(with: "user undetected", roomCode: "not roomcode", title: title, sender: sender, content: content)
+//        APIcaller.shared.getLetterData { [weak self]  result in
+//            switch result {
+//            case .success(let data):
+//
+//            }
+//        }
+    }
 
 }
 
+//[weak self] result in
+/*
+ case .success(let data):
+     // 가져온 데이터를 ViewController의 userData 배열에 저장
+     self?.data = data
+     // 테이블 뷰를 메인 스레드에서 업데이트
+     DispatchQueue.main.async {
+         self?.tableView.reloadData()
+     }
+     case .failure(let error):
+         print("API call error: \(error)")
+     }
+ }
+ 
+ */
 
 
 

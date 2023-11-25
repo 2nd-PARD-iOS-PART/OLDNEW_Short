@@ -8,14 +8,12 @@
 import Foundation
 
 struct User : Codable{
-    let result : Bool
-    let message : String 
     let data : [GetUserData]
 }
 
 struct GetUserData : Codable{
-    let name : String
-    let age : Int
-    let part : String
-    let imgURL : String?
+    let id : Int
+    let userid : String
+    let username : String
+
 }
