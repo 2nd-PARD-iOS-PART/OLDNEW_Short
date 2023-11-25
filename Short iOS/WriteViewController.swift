@@ -130,11 +130,15 @@ protocol WriteViewControllerDelegate: AnyObject {
         imagePickerController.sourceType = .photoLibrary
         present(imagePickerController, animated: true, completion: nil)
     }
-    
-    
-    @objc func submitTapped() {
-    //
+
+        
+        // Inside WriteViewController
+        @objc func submitTapped() {
+            guard let content = contentTextView?.text else { return }
+            delegate?.didSubmitContent(content)
+            navigationController?.popViewController(animated: true)
         }
+
         
         
         

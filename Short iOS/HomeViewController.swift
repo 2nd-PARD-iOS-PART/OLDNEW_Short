@@ -1,17 +1,17 @@
-////////
-////////  HomeViewController.swift
-////////  Short iOS
-////////
-////////  Created by 박서윤 on 2023/11/25.
-////////
+//
+//  HomeViewController.swift
+//  Short iOS
+//
+//  Created by 박서윤 on 2023/11/25.
+//
 
 
 import UIKit
 
 class HomeViewController: UIViewController {
-
     var tableView = UITableView()
     var contentData: [String] = [] // Data to be displayed in the table view
+    var wordImageView: UIImageView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class HomeViewController: UIViewController {
         // Configure the table view
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.reuseIdentifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
 
@@ -34,7 +34,7 @@ class HomeViewController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        
+
         // Add button setup with image
         let addButton = UIButton(type: .system)
         if let image = UIImage(named: "addbutton") {
@@ -60,13 +60,14 @@ class HomeViewController: UIViewController {
             tableView.backgroundColor = .clear // Set table view background clear
         }
     }
-    
+
     func addWordImage() {
-        let wordImageView = UIImageView(image: UIImage(named: "word"))
+        wordImageView = UIImageView(image: UIImage(named: "word"))
+        guard let wordImageView = wordImageView else { return }
         wordImageView.contentMode = .scaleAspectFit
         wordImageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(wordImageView)
-        
+
         NSLayoutConstraint.activate([
             wordImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             wordImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -80,14 +81,17 @@ class HomeViewController: UIViewController {
         writeVC.delegate = self  // Set the delegate
         navigationController?.pushViewController(writeVC, animated: true)
     }
-    
-    
 }
 
 extension HomeViewController: WriteViewControllerDelegate {
     func didSubmitContent(_ content: String) {
         contentData.append(content)
         tableView.reloadData()
+
+        // Hide the word image if contentData is not empty
+        if !contentData.isEmpty {
+            wordImageView?.isHidden = true
+        }
     }
 }
 
@@ -97,9 +101,14 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = contentData[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.reuseIdentifier, for: indexPath) as? CustomTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.titleLabel.text = contentData[indexPath.row]
         return cell
     }
-}
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 125 // Set the height for each row
+    }
+}

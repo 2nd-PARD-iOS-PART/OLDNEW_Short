@@ -21,6 +21,8 @@
 		0DE2B3CF2B1098400066BD68 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0DE2B3CE2B1098400066BD68 /* .gitignore */; };
 		2D22C8CB2B10F88800429961 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D22C8CA2B10F88800429961 /* WriteViewController.swift */; };
 		2D22C8CD2B11437600429961 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D22C8CC2B11437600429961 /* HomeViewController.swift */; };
+		2D22C8D12B116E2D00429961 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D22C8D02B116E2D00429961 /* Model.swift */; };
+		2D22C8D42B116F8600429961 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D22C8D32B116F8600429961 /* CustomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		0DE2B3CE2B1098400066BD68 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		2D22C8CA2B10F88800429961 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
 		2D22C8CC2B11437600429961 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2D22C8D02B116E2D00429961 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		2D22C8D32B116F8600429961 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,11 +114,13 @@
 		0DE2B3902B10883E0066BD68 /* Short iOS */ = {
 			isa = PBXGroup;
 			children = (
+				2D22C8D22B116E3600429961 /* model */,
 				0DE2B3CB2B108E2F0066BD68 /* App */,
 				0DE2B3C92B108D7B0066BD68 /* APICaller */,
 				0DE2B3CA2B108D950066BD68 /* Theme */,
 				2D22C8CA2B10F88800429961 /* WriteViewController.swift */,
 				2D22C8CC2B11437600429961 /* HomeViewController.swift */,
+				2D22C8D32B116F8600429961 /* CustomTableViewCell.swift */,
 				0DE2B3CD2B1090AC0066BD68 /* Resources */,
 				0DE2B39F2B1088400066BD68 /* Info.plist */,
 			);
@@ -172,6 +178,14 @@
 				0DE2B39A2B1088400066BD68 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		2D22C8D22B116E3600429961 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				2D22C8D02B116E2D00429961 /* Model.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,8 +323,10 @@
 				0DE2B3C82B108CEE0066BD68 /* ImageSystem.swift in Sources */,
 				0DE2B3922B10883E0066BD68 /* AppDelegate.swift in Sources */,
 				0DE2B3942B10883E0066BD68 /* SceneDelegate.swift in Sources */,
+				2D22C8D12B116E2D00429961 /* Model.swift in Sources */,
 				2D22C8CD2B11437600429961 /* HomeViewController.swift in Sources */,
 				0DE2B3C22B1088770066BD68 /* APICaller.swift in Sources */,
+				2D22C8D42B116F8600429961 /* CustomTableViewCell.swift in Sources */,
 				2D22C8CB2B10F88800429961 /* WriteViewController.swift in Sources */,
 				0DE2B3C62B108CA40066BD68 /* FontSystem.swift in Sources */,
 			);
